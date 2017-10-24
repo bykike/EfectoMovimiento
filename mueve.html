@@ -1,0 +1,64 @@
+<html>
+<head>
+<script>
+	function detenerError(){
+	return true;
+	}
+	window.onerror=detenerError
+</script>
+
+<style>
+.shakeimage {
+	position:relative;
+	}
+</style>
+
+<script language="JavaScript1.2">
+	var rector=2
+	var stopit=20
+	var a=10
+	function init(which){
+			stopit=0;
+			shake=which;
+			shake.style.left=0;
+			shake.style.top=0;
+		}
+
+	function traqueteoimage(){
+		if ((!document.all&&!document.getElementById)||stopit==1)
+			return;
+		if (a==1){
+			shake.style.top=parseInt(shake.style.top)+rector
+			}
+			else if (a==2){
+					shake.style.left=parseInt(shake.style.left)+rector;
+			}
+			else if (a==3){
+					shake.style.top=parseInt(shake.style.top)-rector;
+			}
+			else{
+					shake.style.left=parseInt(shake.style.left)-rector;
+			}
+			if (a<4)
+				a++;
+				else
+					a=1;
+					setTimeout("traqueteoimage()",50);
+		}
+
+	function stoprattle(which){
+		stopit=1;
+		which.style.left=0;
+		which.style.top=0;
+	}
+</script>
+
+<title>JavaScript Mover imagen</title>
+</head>
+<body>
+
+<p align="left"><font face="Arial" color="#000000"><small>Ejemplo: </small></font><img
+src="dron.png" class="shakeimage" onMouseover="init(this);traqueteoimage()"
+onMouseout="stoprattle(this)"  onclick="alert('Aquí no ha pasado nada')"></p>
+</body>
+</html>
